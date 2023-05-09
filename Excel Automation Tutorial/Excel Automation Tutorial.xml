@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Commands>
+    <ScriptAction>
+      <ScriptCommand xsi:type="ExcelCreateApplicationCommand" CommandID="f9d6bb0b-a32f-4e7f-8f4a-f27977a70a9e" CommandName="ExcelOpenApplicationCommand" IsCommented="false" SelectionName="Create Excel Application" DefaultPause="0" LineNumber="1" PauseBeforeExeucution="false" CommandEnabled="true" v_InstanceName="weatherExcel" />
+    </ScriptAction>
+    <ScriptAction>
+      <ScriptCommand xsi:type="ExcelOpenWorkbookCommand" CommandID="b8cac172-008f-4aa5-b451-dcfe69294402" CommandName="ExcelOpenWorkbookCommand" IsCommented="false" SelectionName="Open Workbook" DefaultPause="0" LineNumber="2" PauseBeforeExeucution="false" CommandEnabled="true" v_InstanceName="weatherExcel" v_FilePath="path\to\your\excel.xlsx" />
+    </ScriptAction>
+    <ScriptAction>
+      <ScriptCommand xsi:type="ExcelGetLastRowCommand" CommandID="d445dee2-9b42-49c5-8968-fd8c516e0465" CommandName="ExcelGetLastRowCommand" IsCommented="false" SelectionName="Get Last Row Index" DefaultPause="0" LineNumber="3" PauseBeforeExeucution="false" CommandEnabled="true" v_InstanceName="weatherExcel" v_ColumnLetter="A" v_applyToVariableName="lastRow" />
+    </ScriptAction>
+    <ScriptAction>
+      <ScriptCommand xsi:type="ExcelGetCellCommand" CommandID="0f009783-e6f6-4ae1-bd2a-130e7ca09ba9" CommandName="ExcelGetCellCommand" IsCommented="false" SelectionName="Get Cell" DefaultPause="0" LineNumber="4" PauseBeforeExeucution="false" CommandEnabled="true" v_InstanceName="weatherExcel" v_ExcelCellAddress="B[lastRow]" v_userVariableName="city" />
+    </ScriptAction>
+    <ScriptAction>
+      <ScriptCommand xsi:type="VariableCommand" CommandID="0105acab-649f-4d98-b61b-9769be15a6c5" CommandName="VariableCommand" IsCommented="false" SelectionName="Set Variable" DefaultPause="0" LineNumber="5" PauseBeforeExeucution="false" CommandEnabled="true" v_userVariableName="lastRow" v_Input="[lastRow]+2" />
+    </ScriptAction>
+    <ScriptAction>
+      <ScriptCommand xsi:type="ExcelSetCellCommand" CommandID="6f435ccc-d54b-48ed-bb6b-941974039a94" CommandName="ExcelSetCellCommand" IsCommented="false" SelectionName="Set Cell" DefaultPause="0" LineNumber="6" PauseBeforeExeucution="false" CommandEnabled="true" v_InstanceName="weatherExcel" v_TextToSet="Date" v_ExcelCellAddress="A[lastRow]" />
+    </ScriptAction>
+    <ScriptAction>
+      <ScriptCommand xsi:type="ExcelSetCellCommand" CommandID="99659b83-c163-4380-8792-cc2783d9185a" CommandName="ExcelSetCellCommand" IsCommented="false" SelectionName="Set Cell" DefaultPause="0" LineNumber="7" PauseBeforeExeucution="false" CommandEnabled="true" v_InstanceName="weatherExcel" v_TextToSet="Max. Temp." v_ExcelCellAddress="B[lastRow]" />
+    </ScriptAction>
+    <ScriptAction>
+      <ScriptCommand xsi:type="ExcelSetCellCommand" CommandID="5c07a876-1fb5-4e4d-bec2-a0c126b15dd3" CommandName="ExcelSetCellCommand" IsCommented="false" SelectionName="Set Cell" DefaultPause="0" LineNumber="8" PauseBeforeExeucution="false" CommandEnabled="true" v_InstanceName="weatherExcel" v_TextToSet="Note" v_ExcelCellAddress="C[lastRow]" />
+    </ScriptAction>
+    <ScriptAction>
+      <ScriptCommand xsi:type="ExcelSetRangeHighlightColorCommand" CommandID="3e2029e5-e02f-437c-9b40-a12e0c180abd" CommandName="ExcelSetRangeHighlightColorCommand" IsCommented="false" SelectionName="Set Range Highlight Color" DefaultPause="0" LineNumber="9" PauseBeforeExeucution="false" CommandEnabled="true" v_InstanceName="weatherExcel" v_SheetName="Sheet1" v_SourceRange="A[lastRow]:C[lastRow]" v_Color="gold" />
+    </ScriptAction>
+    <ScriptAction>
+      <ScriptCommand xsi:type="VariableCommand" CommandID="32427579-cb28-4425-8d9a-5e2900529d62" CommandName="VariableCommand" IsCommented="false" SelectionName="Set Variable" DefaultPause="0" LineNumber="10" PauseBeforeExeucution="false" CommandEnabled="true" v_userVariableName="lastRow" v_Input="[lastRow]+1" />
+    </ScriptAction>
+    <ScriptAction>
+      <ScriptCommand xsi:type="RESTCommand" CommandID="23964d03-816d-4890-862a-6b82fe149d2d" CommandName="RESTCommand" IsCommented="false" SelectionName="Rest API Integration" DefaultPause="0" LineNumber="11" PauseBeforeExeucution="false" CommandEnabled="true" v_BaseURL="https://weather.visualcrossing.com" v_APIEndPoint="/VisualCrossingWebServices/rest/services/timeline/[city]/next7days?unitGroup=metric&amp;include=days&amp;key=[API_KEY]6&amp;contentType=json" v_APIMethodType="GET" v_userVariableName="apiResponse" v_RequestFormat="Json">
+        <v_AdvancedParameters>
+          <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+            <xs:element name="A17vRESTPara23Table041723.032353">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Parameter_x0020_Name" type="xs:string" minOccurs="0" />
+                  <xs:element name="Parameter_x0020_Value" type="xs:string" minOccurs="0" />
+                  <xs:element name="Content_x0020_Type" type="xs:string" minOccurs="0" />
+                  <xs:element name="Parameter_x0020_Type" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="A17vRESTPara23Table041723.032353" msdata:UseCurrentLocale="true">
+              <xs:complexType>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                  <xs:element ref="A17vRESTPara23Table041723.032353" />
+                </xs:choice>
+              </xs:complexType>
+            </xs:element>
+          </xs:schema>
+          <diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1" />
+        </v_AdvancedParameters>
+        <v_RESTParameters>
+          <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+            <xs:element name="RESTPara23Table041723.032353">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Parameter_x0020_Type" type="xs:string" minOccurs="0" />
+                  <xs:element name="Parameter_x0020_Name" type="xs:string" minOccurs="0" />
+                  <xs:element name="Parameter_x0020_Value" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="RESTPara23Table041723.032353" msdata:UseCurrentLocale="true">
+              <xs:complexType>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                  <xs:element ref="RESTPara23Table041723.032353" />
+                </xs:choice>
+              </xs:complexType>
+            </xs:element>
+          </xs:schema>
+          <diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1" />
+        </v_RESTParameters>
+      </ScriptCommand>
+    </ScriptAction>
+    <ScriptAction>
+      <ScriptCommand xsi:type="ParseJsonModelCommand" CommandID="ff1145e0-292c-4c72-b52d-38f51b435a63" CommandName="ParseJsonModelCommand" IsCommented="false" SelectionName="Read Json Model" DefaultPause="0" LineNumber="12" PauseBeforeExeucution="false" CommandEnabled="true" v_InputValue="[apiResponse]">
+        <v_ParseObjects>
+          <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+            <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="ParseJsonObjectsTable041723033200" msdata:UseCurrentLocale="true">
+              <xs:complexType>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                  <xs:element name="ParseJsonObjectsTable041723033200">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="Json_x0020_Selector" type="xs:string" minOccurs="0" />
+                        <xs:element name="Output_x0020_Variable" type="xs:string" minOccurs="0" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:choice>
+              </xs:complexType>
+            </xs:element>
+          </xs:schema>
+          <diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1">
+            <DocumentElement>
+              <ParseJsonObjectsTable041723033200 diffgr:id="ParseJsonObjectsTable0417230332001" msdata:rowOrder="0" diffgr:hasChanges="inserted">
+                <Json_x0020_Selector>$.days</Json_x0020_Selector>
+                <Output_x0020_Variable>forecasts</Output_x0020_Variable>
+              </ParseJsonObjectsTable041723033200>
+            </DocumentElement>
+          </diffgr:diffgram>
+        </v_ParseObjects>
+      </ScriptCommand>
+    </ScriptAction>
+    <ScriptAction>
+      <ScriptCommand xsi:type="ParseJSONArrayCommand" CommandID="03cda033-8526-45e7-a479-c781e2ab02a7" CommandName="ParseJSONArrayCommand" IsCommented="false" SelectionName="Read Json Array" DefaultPause="0" LineNumber="13" PauseBeforeExeucution="false" CommandEnabled="true" v_InputValue="[forecasts]" v_applyToVariableName="fcstArray" />
+    </ScriptAction>
+    <ScriptAction>
+      <ScriptCommand xsi:type="BeginListLoopCommand" CommandID="b2c6acbb-270f-4190-b73a-125b5dd4d8b8" CommandName="BeginListLoopCommand" IsCommented="false" SelectionName="Loop List" DefaultPause="0" LineNumber="14" PauseBeforeExeucution="false" CommandEnabled="true" v_LoopParameter="[fcstArray]" />
+      <AdditionalScriptCommands>
+        <ScriptCommand xsi:type="CommentCommand" CommandID="3e9acc1a-badb-43b2-87c4-961ff9423b90" CommandName="CommentCommand" IsCommented="false" SelectionName="Comment Line" DefaultPause="0" LineNumber="15" PauseBeforeExeucution="false" v_Comment="Items in this section will run within the loop" CommandEnabled="true" />
+      </AdditionalScriptCommands>
+      <AdditionalScriptCommands>
+        <ScriptCommand xsi:type="ParseJsonModelCommand" CommandID="45533916-303c-45e8-8b25-a13a33ba3219" CommandName="ParseJsonModelCommand" IsCommented="false" SelectionName="Read Json Model" DefaultPause="0" LineNumber="16" PauseBeforeExeucution="false" CommandEnabled="true" v_InputValue="[fcstArray]">
+          <v_ParseObjects>
+            <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+              <xs:element name="ParseJsonObjectsTable041723033200">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Json_x0020_Selector" type="xs:string" minOccurs="0" />
+                    <xs:element name="Output_x0020_Variable" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="ParseJsonObjectsTable041723033200" msdata:UseCurrentLocale="true">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="ParseJsonObjectsTable041723033200" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+            </xs:schema>
+            <diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1">
+              <DocumentElement>
+                <ParseJsonObjectsTable041723033200 diffgr:id="ParseJsonObjectsTable0417230332001" msdata:rowOrder="0" diffgr:hasChanges="inserted">
+                  <Json_x0020_Selector>$.datetime</Json_x0020_Selector>
+                  <Output_x0020_Variable>date</Output_x0020_Variable>
+                </ParseJsonObjectsTable041723033200>
+                <ParseJsonObjectsTable041723033200 diffgr:id="ParseJsonObjectsTable0417230332002" msdata:rowOrder="1" diffgr:hasChanges="inserted">
+                  <Json_x0020_Selector>$.tempmax</Json_x0020_Selector>
+                  <Output_x0020_Variable>temp</Output_x0020_Variable>
+                </ParseJsonObjectsTable041723033200>
+              </DocumentElement>
+            </diffgr:diffgram>
+          </v_ParseObjects>
+        </ScriptCommand>
+      </AdditionalScriptCommands>
+      <AdditionalScriptCommands>
+        <ScriptCommand xsi:type="ExcelSetCellCommand" CommandID="0a90ff37-ee4e-41ed-8417-9aa914542bfe" CommandName="ExcelSetCellCommand" IsCommented="false" SelectionName="Set Cell" DefaultPause="0" LineNumber="17" PauseBeforeExeucution="false" CommandEnabled="true" v_InstanceName="weatherExcel" v_TextToSet="[date]" v_ExcelCellAddress="A[lastRow]" />
+      </AdditionalScriptCommands>
+      <AdditionalScriptCommands>
+        <ScriptCommand xsi:type="ExcelSetCellCommand" CommandID="6121b273-9ae9-4495-99e7-1a3a2bb59590" CommandName="ExcelSetCellCommand" IsCommented="false" SelectionName="Set Cell" DefaultPause="0" LineNumber="18" PauseBeforeExeucution="false" CommandEnabled="true" v_InstanceName="weatherExcel" v_TextToSet="[temp]" v_ExcelCellAddress="B[lastRow]" />
+      </AdditionalScriptCommands>
+      <AdditionalScriptCommands>
+        <ScriptCommand xsi:type="BeginIfCommand" CommandID="94bc7b1d-d69d-46e5-a94a-7178c0518930" CommandName="BeginIfCommand" IsCommented="false" SelectionName="Begin If" DefaultPause="0" LineNumber="19" PauseBeforeExeucution="false" CommandEnabled="true" v_IfActionType="Value">
+          <v_IfActionParameterTable>
+            <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+              <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="I0AcPionPara10Table041723.051022" msdata:UseCurrentLocale="true">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="I0AcPionPara10Table041723.051022">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Parameter_x0020_Name" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+                          <xs:element name="Parameter_x0020_Value" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+            </xs:schema>
+            <diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1">
+              <DocumentElement>
+                <I0AcPionPara10Table041723.051022 diffgr:id="I0AcPionPara10Table041723.0510221" msdata:rowOrder="0" diffgr:hasChanges="inserted">
+                  <Parameter_x0020_Name>Value1</Parameter_x0020_Name>
+                  <Parameter_x0020_Value>[temp]</Parameter_x0020_Value>
+                </I0AcPionPara10Table041723.051022>
+                <I0AcPionPara10Table041723.051022 diffgr:id="I0AcPionPara10Table041723.0510222" msdata:rowOrder="1" diffgr:hasChanges="inserted">
+                  <Parameter_x0020_Name>Operand</Parameter_x0020_Name>
+                  <Parameter_x0020_Value>is greater than</Parameter_x0020_Value>
+                </I0AcPionPara10Table041723.051022>
+                <I0AcPionPara10Table041723.051022 diffgr:id="I0AcPionPara10Table041723.0510223" msdata:rowOrder="2" diffgr:hasChanges="inserted">
+                  <Parameter_x0020_Name>Value2</Parameter_x0020_Name>
+                  <Parameter_x0020_Value>15</Parameter_x0020_Value>
+                </I0AcPionPara10Table041723.051022>
+              </DocumentElement>
+            </diffgr:diffgram>
+          </v_IfActionParameterTable>
+        </ScriptCommand>
+        <AdditionalScriptCommands>
+          <ScriptCommand xsi:type="CommentCommand" CommandID="1d29cace-a10b-4935-a23e-6ef9d8b937a4" CommandName="CommentCommand" IsCommented="false" SelectionName="Comment Line" DefaultPause="0" LineNumber="20" PauseBeforeExeucution="false" v_Comment="Items in this section will run if the statement is true" CommandEnabled="true" />
+        </AdditionalScriptCommands>
+        <AdditionalScriptCommands>
+          <ScriptCommand xsi:type="ExcelSetCellCommand" CommandID="9307780b-a6e9-4c6b-bb95-8e09a5810420" CommandName="ExcelSetCellCommand" IsCommented="false" SelectionName="Set Cell" DefaultPause="0" LineNumber="21" PauseBeforeExeucution="false" CommandEnabled="true" v_InstanceName="weatherExcel" v_TextToSet="Moderate" v_ExcelCellAddress="C[lastRow]" />
+        </AdditionalScriptCommands>
+        <AdditionalScriptCommands>
+          <ScriptCommand xsi:type="ElseCommand" CommandID="4f5a22ce-abf5-48f7-94ae-922c256caed6" CommandName="ElseCommand" IsCommented="false" SelectionName="Else" DefaultPause="0" LineNumber="22" PauseBeforeExeucution="false" CommandEnabled="true" />
+        </AdditionalScriptCommands>
+        <AdditionalScriptCommands>
+          <ScriptCommand xsi:type="ExcelSetCellCommand" CommandID="8cedf3b5-4245-4950-acdc-a9f7ac333019" CommandName="ExcelSetCellCommand" IsCommented="false" SelectionName="Set Cell" DefaultPause="0" LineNumber="23" PauseBeforeExeucution="false" CommandEnabled="true" v_InstanceName="weatherExcel" v_TextToSet="Normal" v_ExcelCellAddress="C[lastRow]" />
+        </AdditionalScriptCommands>
+        <AdditionalScriptCommands>
+          <ScriptCommand xsi:type="EndIfCommand" CommandID="d8478d3f-63cf-4e0b-ae87-752efde2868e" CommandName="EndIfCommand" IsCommented="false" SelectionName="End If" DefaultPause="0" LineNumber="24" PauseBeforeExeucution="false" CommandEnabled="true" />
+        </AdditionalScriptCommands>
+      </AdditionalScriptCommands>
+      <AdditionalScriptCommands>
+        <ScriptCommand xsi:type="VariableCommand" CommandID="b157cc6e-e47d-4f79-a111-02d215c6819c" CommandName="VariableCommand" IsCommented="false" SelectionName="Set Variable" DefaultPause="0" LineNumber="25" PauseBeforeExeucution="false" CommandEnabled="true" v_userVariableName="lastRow" v_Input="[lastRow]+1" />
+      </AdditionalScriptCommands>
+      <AdditionalScriptCommands>
+        <ScriptCommand xsi:type="EndLoopCommand" CommandID="d923aec6-de04-4843-9b1c-b526ef4fb2ab" CommandName="EndLoopCommand" IsCommented="false" SelectionName="End Loop" DefaultPause="0" LineNumber="26" PauseBeforeExeucution="false" CommandEnabled="true" />
+      </AdditionalScriptCommands>
+    </ScriptAction>
+    <ScriptAction>
+      <ScriptCommand xsi:type="ExcelCloseApplicationCommand" CommandID="9db71973-33d9-4f6c-a9ab-4d19b40b2e92" CommandName="ExcelCloseApplicationCommand" IsCommented="false" SelectionName="Close Excel Application" DefaultPause="0" LineNumber="27" PauseBeforeExeucution="false" CommandEnabled="true" v_InstanceName="weatherExcel" v_ExcelSaveOnExit="true" />
+    </ScriptAction>
+  </Commands>
+  <Variables />
+</Script>
